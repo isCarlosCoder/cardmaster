@@ -6,6 +6,7 @@
     <title>Login - CardMaster</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         body {
@@ -44,6 +45,7 @@
                     </div>
                     <a href="#" class="text-sm text-blue-600 hover:text-blue-800">Esqueceu a senha?</a>
                 </div>
+                <div class="g-recaptcha mb-6" data-sitekey="<%= resitekey %>"></div>
                 <input type="submit" value="Entrar" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full transition duration-300">
             </form>
             <div class="mt-8 text-center">

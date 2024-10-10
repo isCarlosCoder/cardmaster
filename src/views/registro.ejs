@@ -6,6 +6,7 @@
     <title>Registro - CardMaster</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         body {
@@ -61,6 +62,9 @@
                     <label for="terms" class="text-sm text-gray-600">
                         Eu li e concordo com os <a href="/termos-de-servicos" class="text-blue-600 hover:text-blue-800">Termos de Serviço</a> e a <a href="/politica-de-privacidade" class="text-blue-600 hover:text-blue-800">Política de Privacidade</a>
                     </label>
+                </div>
+                <div class="md:col-span-2 flex items-center justify-center">
+                    <div class="g-recaptcha" data-sitekey="<%= resitekey %>"></div>
                 </div>
                 <div class="md:col-span-2">
                     <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full transition duration-300">

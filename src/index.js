@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
@@ -5,6 +7,9 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const prisma = require('./prisma');
 const authenticationMiddleware = require('./middlewares');
+const { sendMail } = require('./services/mail')
+const { env } = require('./utils/env')
+const axios = require('axios');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -64,20 +69,47 @@ app.get('/', redirectIfLoggedIn, (req, res) => {
 });
 
 app.get('/login', redirectIfLoggedIn, (req, res) => {
-  res.render('login');
+  const resitekey = env.RECAPTCHA_SITE_KEY
+
+  res.render('login', {
+    resitekey
+  });
 });
 
 app.get('/registro', redirectIfLoggedIn, (req, res) => {
-  res.render('registro');
+  const resitekey = env.RECAPTCHA_SITE_KEY
+
+  res.render('registro', {
+    resitekey
+  });
 });
 
 app.get('/confirmacao', async (req, res) => {
+  return res.redirect('/home');
+
   const user = await getUserData(req)
 
   if (!user) {
     res.clearCookie('token');
     return res.redirect('/login');
   }
+
+  if (user.isVerified) {
+    return res.redirect('/home');
+  }
+
+  const mailOptions = {
+    from: 'CardMaster <suporte@cardmasterbr.online>',
+    to: user.email,
+    subject: 'Confirme sua conta',
+    html: `
+      <h1>Confirme sua conta</h1>
+      <p>Por favor, confirme sua conta clicando no link abaixo:</p>
+      <a href="${req.protocol}://${req.get('host')}/check?token=${user.id}">Confirmar conta</a>
+      `
+  }
+
+  await sendMail(mailOptions)
 
   res.render('confirmacao');
 });
@@ -146,11 +178,43 @@ app.get('/jogos', (req, res) => {
 // Metodos post
 app.post('/registro', async (req, res) => {
   try {
-    const { name, lastName, birthdate, email, password, confirmPassword } = req.body;
+    const {
+      name,
+      lastName,
+      birthdate,
+      email,
+      password,
+      confirmPassword,
+      'g-recaptcha-response': recaptchaResponse
+    } = req.body;
+
+    if (!recaptchaResponse || recaptchaResponse.trim() === '') {
+      return res.status(401).render('register', {
+        error: 'Por favor, confirme que não é um robo',
+        resitekey: env.RECAPTCHA_SITE_KEY
+      });
+    }
+
+    const reSecretKey = env.RECAPTCHA_SECRET_KEY;
+
+    const confirmation = await axios.post(`https://www.google.com/recaptcha/api/siteverify`, null, {
+      params: {
+        secret: reSecretKey,
+        response: recaptchaResponse
+      }
+    })
+
+    if (!confirmation.data.success) {
+      return res.status(401).render('register', {
+        error: 'Por favor, confirme que não é um robo',
+        resitekey: env.RECAPTCHA_SITE_KEY
+      });
+    }
 
     if (password !== confirmPassword) {
       return res.status(400).render('registro', {
-        error: 'As senhas não conferem'
+        error: 'As senhas não conferem',
+        resitekey: env.RECAPTCHA_SITE_KEY
       });
     }
 
@@ -159,7 +223,8 @@ app.post('/registro', async (req, res) => {
 
     if (age < 18) {
       return res.status(400).render('registro', {
-        error: 'Você deve ter pelo menos 18 anos para se registrar'
+        error: 'Você deve ter pelo menos 18 anos para se registrar',
+        resitekey: env.RECAPTCHA_SITE_KEY
       });
     }
 
@@ -173,7 +238,8 @@ app.post('/registro', async (req, res) => {
 
     if (existingUser) {
       return res.status(400).render('registro', {
-        error: 'Usuário ou e-mail já existe'
+        error: 'Usuário ou e-mail já existe',
+        resitekey: env.RECAPTCHA_SITE_KEY
       });
     }
 
@@ -186,22 +252,53 @@ app.post('/registro', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).render('registro', {
-      error: 'Erro ao registrar usuário'
+      error: 'Erro ao registrar usuário',
+      resitekey: env.RECAPTCHA_SITE_KEY
     });
   }
 });
 
 app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, 'g-recaptcha-response': recaptchaResponse } = req.body;
+
+  if (!recaptchaResponse || recaptchaResponse.trim() === '') {
+    return res.status(401).render('login', {
+      error: 'Por favor, confirme que não é um robo',
+      resitekey: env.RECAPTCHA_SITE_KEY
+    });
+  }
+
+  const reSecretKey = env.RECAPTCHA_SECRET_KEY;
+
+  const confirmation = await axios.post(`https://www.google.com/recaptcha/api/siteverify`, null, {
+    params: {
+      secret: reSecretKey,
+      response: recaptchaResponse
+    }
+  })
+
+  if (!confirmation.data.success) {
+    return res.status(401).render('login', {
+      error: 'Por favor, confirme que não é um robo',
+      resitekey: env.RECAPTCHA_SITE_KEY
+    });
+  }
+
   const user = await prisma.user.findUnique({ where: { email } });
 
   if (!user) {
-    return res.status(401).render('login', { error: 'Email ou senha incorretos' });
+    return res.status(401).render('login', {
+      error: 'Email ou senha incorretos',
+      resitekey: env.RECAPTCHA_SITE_KEY
+    });
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) {
-    return res.status(401).render('login', { error: 'Email ou senha incorretos' });
+    return res.status(401).render('login', {
+      error: 'Email ou senha incorretos',
+      resitekey: env.RECAPTCHA_SITE_KEY
+    });
   }
 
   const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1d' });
