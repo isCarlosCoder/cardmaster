@@ -307,6 +307,24 @@ app.post('/login', async (req, res) => {
   await res.redirect('/home');
 });
 
+// Rotas para os jogos
+
+app.get('/numero-da-sorte', async (req, res) => {
+  const game = {
+    number: 32,
+    date: new Date().toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit' }),
+    time: new Date().toLocaleTimeString('pt-BR', { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit' }),
+    players: 24,
+    userNumbers: [
+      32, 16, 8, 4, 2, 43, 17
+    ]
+  }
+
+  res.render('lucky-number', {
+    game
+  });
+})
+
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
