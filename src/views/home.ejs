@@ -10,8 +10,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background-image: url('https://example.com/background-pattern.jpg');
-            background-repeat: repeat;
         }
     </style>
 </head>
@@ -25,7 +23,7 @@
                     <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Depósito</a>
                     <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Saque</a>
                     <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Perfil</a>
-                    <a href="#" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300">Sair</a>
+                    <a href="/logout" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300">Sair</a>
                 </div>
                 <button class="md:hidden text-gray-600 focus:outline-none" id="mobile-menu-button">
                     <i class="fas fa-bars text-2xl"></i>
@@ -38,29 +36,45 @@
                 <a href="#" class="block text-gray-600 hover:text-blue-600 transition duration-300 py-2">Depósito</a>
                 <a href="#" class="block text-gray-600 hover:text-blue-600 transition duration-300 py-2">Saque</a>
                 <a href="#" class="block text-gray-600 hover:text-blue-600 transition duration-300 py-2">Perfil</a>
-                <a href="#" class="block bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300 mt-2">Sair</a>
+                <a href="/logout" class="block bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300 mt-2">Sair</a>
             </div>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8">
+        <% if (!user.isVerified) { %>
+            <div class="bg-yellow-100 p-4 rounded-lg mb-8">
+                <h2 class="text-xl font-bold mb-2">Atenção!</h2>
+                <p class="text-sm text-gray-600">Sua conta ainda não está verificada. Por favor, verifique sua conta para continuar.</p>
+                <a href="#" class="text-blue-600 hover:underline">Verificar Conta</a>
+            </div>
+        <% } %>
+
         <section class="bg-white rounded-lg shadow-md p-6 mb-8 transform hover:scale-105 transition duration-300">
-            <h2 class="text-2xl font-bold mb-4">Bem-vindo, João Silva!</h2>
+            <h2 class="text-2xl font-bold mb-4">Bem-vindo, <%= user.name %>!</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="bg-blue-100 p-4 rounded-lg">
                     <h3 class="font-semibold mb-2">Saldo</h3>
-                    <p class="text-2xl font-bold">R$ 1.250,00</p>
-                    <p class="text-sm text-gray-600">Último depósito: R$ 500,00 (há 2 dias)</p>
+                    <p class="text-2xl font-bold">R$ <%= user.balance %>,00</p>
+                    <% if (user.lastDeposit) { %>
+                        <p class="text-sm text-gray-600">Último depósito: R$ <%= user.lastDeposit %>,00 (há 2 dias)</p>
+                    <% } else { %>
+                        <p class="text-sm text-gray-600">Nenhum depósito recente</p>
+                    <% } %>
                 </div>
                 <div class="bg-green-100 p-4 rounded-lg">
                     <h3 class="font-semibold mb-2">Bônus Disponível</h3>
-                    <p class="text-2xl font-bold">R$ 75,00</p>
-                    <p class="text-sm text-gray-600">Expira em: 5 dias</p>
+                    <p class="text-2xl font-bold">R$ <%= user.bonus %>,00</p>
+                    <% if (user.bonusExpiration) { %>
+                        <p class="text-sm text-gray-600">Expira em: <%= user.bonusExpiration %> dias</p>
+                    <% } else { %>
+                        <p class="text-sm text-gray-600">Nenhum bônus disponível</p>
+                    <% } %>
                 </div>
                 <div class="bg-yellow-100 p-4 rounded-lg">
                     <h3 class="font-semibold mb-2">Pontos de Fidelidade</h3>
-                    <p class="text-2xl font-bold">2.750 pts</p>
-                    <p class="text-sm text-gray-600">Nível: Ouro (20% de cashback)</p>
+                    <p class="text-2xl font-bold"><%= user.points %> pts</p>
+                    <p class="text-sm text-gray-600">Nível: 1 (0% de cashback)</p>
                 </div>
             </div>
         </section>
@@ -71,7 +85,7 @@
                 <div class="bg-white rounded-lg shadow-md p-4 text-center transform hover:scale-105 transition duration-300">
                     <img src="https://i.imgur.com/7NL3ybS.jpg" alt="Truco" class="w-full h-32 object-cover mb-2 rounded">
                     <h3 class="font-semibold mb-2">Truco</h3>
-                    <p class="text-sm text-gray-600 mb-2">Jogadores online: 1.245</p>
+                    <p class="text-sm text-gray-600 mb-2">Jogadores online: 0</p>
                     <a href="#" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Jogar Agora</a>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-4 text-center transform hover:scale-105 transition duration-300">
