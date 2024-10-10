@@ -72,7 +72,7 @@ app.get('/login', redirectIfLoggedIn, (req, res) => {
   const resitekey = env.RECAPTCHA_SITE_KEY
 
   res.render('login', {
-    resitekey
+    resitekey,
   });
 });
 
