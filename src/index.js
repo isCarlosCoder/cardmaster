@@ -10,7 +10,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 const secretKey = '7a8b9c0d1e2f3g4h5i6j7k8l9m0n1o2p3q4r5s6t7u8v9w0x1y2z3a4b5c6d7e8f9g0h1i2j3k4l5m6n7o8p9q0';
 
-
 // Configurar EJS como o motor de visualização
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +30,33 @@ const redirectIfLoggedIn = (req, res, next) => {
   next();
 };
 
+// Busca os dados do usuário no banco de dados
+const getUserData = async (req) => {
+  const token = req.cookies?.token;
+
+  if (!token) {
+    return null;
+  }
+
+  try {
+
+    const decoded = await jwt.verify(token, secretKey);
+    const userId = decoded.userId;
+
+    const user = await prisma.user.findUnique({
+      where: { id: userId }
+    })
+
+    if (!user) {
+      return null;
+    }
+
+    return user
+    
+  } catch {
+    return null;
+  }
+}
 
 // Rotas
 app.get('/', redirectIfLoggedIn, (req, res) => {
@@ -45,9 +71,20 @@ app.get('/registro', redirectIfLoggedIn, (req, res) => {
   res.render('registro');
 });
 
-app.get('/confirmacao', (req, res) => {
+app.get('/confirmacao', async (req, res) => {
+  const user = await getUserData(req)
+
+  if (!user) {
+    res.clearCookie('token');
+    return res.redirect('/login');
+  }
+
   res.render('confirmacao');
 });
+
+app.get('/confirmado', async (req, res) => {
+  res.render('email-confirmado');
+})
 
 app.get('/termos-de-servicos', (req, res) => {
   res.render('termos-de-servicos');
