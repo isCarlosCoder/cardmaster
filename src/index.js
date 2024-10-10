@@ -22,6 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware para não conseguir acessar home e jogos sem login
 app.use('/home', authenticationMiddleware);
