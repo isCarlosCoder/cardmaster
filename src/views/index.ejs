@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardMaster - Jogos de Cartas Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Hero Section -->
+    <section class="min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Bem-vindo ao CardMaster</h1>
+            <p class="text-xl mb-8">A melhor plataforma de jogos de cartas e sorte online</p>
+            <a href="/login" class="bg-white text-blue-600 py-3 px-8 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-lg">Comece a Jogar</a>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="min-h-screen bg-white flex items-center justify-center py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Nossos Jogos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-100 rounded-lg p-6 text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-chess-knight text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Truco</h3>
+                    <p class="text-gray-600">Jogue o clássico jogo de blefe e estratégia</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-dice text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Blackjack</h3>
+                    <p class="text-gray-600">Teste sua sorte contra o dealer</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-ticket-alt text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Raspadinhas</h3>
+                    <p class="text-gray-600">Ganhe prêmios instantâneos</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-crown text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Poker</h3>
+                    <p class="text-gray-600">Domine a arte do poker online</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-heart text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Paciência</h3>
+                    <p class="text-gray-600">Relaxe com o clássico jogo solitário</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 text-center hover:shadow-lg transition duration-300">
+                    <i class="fas fa-gem text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Bingo</h3>
+                    <p class="text-gray-600">Divirta-se com nosso bingo online</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="min-h-screen bg-gray-100 flex items-center justify-center py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Por que escolher o CardMaster?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <i class="fas fa-shield-alt text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Segurança Garantida</h3>
+                    <p class="text-gray-600">Sua segurança é nossa prioridade. Utilizamos criptografia de ponta para proteger seus dados e transações.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <i class="fas fa-gift text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Bônus Exclusivos</h3>
+                    <p class="text-gray-600">Oferecemos bônus e promoções regulares para aumentar suas chances de ganhar.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <i class="fas fa-headset text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Suporte 24/7</h3>
+                    <p class="text-gray-600">Nossa equipe de suporte está sempre disponível para ajudar você com qualquer dúvida ou problema.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <i class="fas fa-mobile-alt text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Jogue em Qualquer Lugar</h3>
+                    <p class="text-gray-600">Nossa plataforma é totalmente responsiva, permitindo que você jogue em qualquer dispositivo, a qualquer hora.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <i class="fas fa-coins text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Variedade de Jogos</h3>
+                    <p class="text-gray-600">Com uma ampla seleção de jogos, você sempre encontrará algo novo e emocionante para jogar.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <i class="fas fa-user-friends text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Comunidade Ativa</h3>
+                    <p class="text-gray-600">Junte-se a uma comunidade vibrante de jogadores e faça novos amigos enquanto joga.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="min-h-screen bg-white flex items-center justify-center py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Sobre o CardMaster</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+                O CardMaster é a principal plataforma de jogos de cartas e sorte online, oferecendo uma experiência de jogo emocionante e segura desde 2010. Nossa missão é proporcionar entretenimento de alta qualidade para jogadores de todos os níveis, combinando tecnologia de ponta com jogos clássicos e inovadores.
+            </p>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+                Com uma equipe dedicada de desenvolvedores e especialistas em jogos, estamos constantemente aprimorando nossa plataforma e adicionando novos jogos para manter a experiência sempre fresca e empolgante. No CardMaster, acreditamos em jogo responsável e fornecemos ferramentas e recursos para ajudar nossos usuários a manterem o controle de suas atividades de jogo.
+            </p>
+            <a href="#" class="bg-blue-600 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300">Saiba Mais</a>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="min-h-screen bg-blue-600 text-white flex items-center justify-center py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">CardMaster em Números</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-4xl md:text-5xl font-bold mb-2">1M+</p>
+                    <p class="text-lg md:text-xl">Jogadores Ativos</p>
+                </div>
+                <div>
+                    <p class="text-4xl md:text-5xl font-bold mb-2">50+</p>
+                    <p class="text-lg md:text-xl">Jogos Disponíveis</p>
+                </div>
+                <div>
+                    <p class="text-4xl md:text-5xl font-bold mb-2">99.9%</p>
+                    <p class="text-lg md:text-xl">Uptime da Plataforma</p>
+                </div>
+                <div>
+                    <p class="text-4xl md:text-5xl font-bold mb-2">10M+</p>
+                    <p class="text-lg md:text-xl">Partidas Jogadas por Dia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="min-h-screen bg-gray-100 flex items-center justify-center py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Perguntas Frequentes</h2>
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Como posso começar a jogar?</h3>
+                    <p class="text-gray-600">Para começar, basta criar uma conta gratuita em nosso site, fazer um depósito e escolher seu jogo favorito.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Os jogos são justos?</h3>
+                    <p class="text-gray-600">Sim, todos os nossos jogos são auditados regularmente por empresas independentes para garantir a justiça e aleatoriedade.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Posso jogar de graça?</h3>
+                    <p class="text-gray-600">Oferecemos versões de demonstração da maioria dos nossos jogos para que você possa praticar antes de apostar dinheiro real.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Como faço para sacar meus ganhos?</h3>
+                    <p class="text-gray-600">Você pode solicitar um saque através da sua conta. Oferecemos várias opções de pagamento seguras e rápidas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">CardMaster</h3>
+                    <p class="text-gray-400">A melhor plataforma de jogos de cartas e sorte online. Jogue com responsabilidade e divirta-se!</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Início</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition  duration-300">Jogos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Sobre Nós</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Suporte</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
+                        <li><a href="/termos-de-servicos" class="text-gray-400 hover:text-white transition duration-300">Termos de Uso</a></li>
+                        <li><a href="/politica-de-privacidade" class="text-gray-400 hover:text-white transition duration-300">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Jogo Responsável</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Siga-nos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-400">&copy; 2024 CardMaster. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

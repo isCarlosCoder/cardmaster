@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardMaster - Sua Casa de Jogos Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://example.com/background-pattern.jpg');
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center">
+                <a href="/home" class="text-2xl font-bold text-blue-600">CardMaster</a>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Jogos</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Depósito</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Saque</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Perfil</a>
+                    <a href="#" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300">Sair</a>
+                </div>
+                <button class="md:hidden text-gray-600 focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </nav>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block text-gray-600 hover:text-blue-600 transition duration-300 py-2">Jogos</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 transition duration-300 py-2">Depósito</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 transition duration-300 py-2">Saque</a>
+                <a href="#" class="block text-gray-600 hover:text-blue-600 transition duration-300 py-2">Perfil</a>
+                <a href="#" class="block bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300 mt-2">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8 transform hover:scale-105 transition duration-300">
+            <h2 class="text-2xl font-bold mb-4">Bem-vindo, João Silva!</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="bg-blue-100 p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">Saldo</h3>
+                    <p class="text-2xl font-bold">R$ 1.250,00</p>
+                    <p class="text-sm text-gray-600">Último depósito: R$ 500,00 (há 2 dias)</p>
+                </div>
+                <div class="bg-green-100 p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">Bônus Disponível</h3>
+                    <p class="text-2xl font-bold">R$ 75,00</p>
+                    <p class="text-sm text-gray-600">Expira em: 5 dias</p>
+                </div>
+                <div class="bg-yellow-100 p-4 rounded-lg">
+                    <h3 class="font-semibold mb-2">Pontos de Fidelidade</h3>
+                    <p class="text-2xl font-bold">2.750 pts</p>
+                    <p class="text-sm text-gray-600">Nível: Ouro (20% de cashback)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Jogos Populares</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white rounded-lg shadow-md p-4 text-center transform hover:scale-105 transition duration-300">
+                    <img src="https://i.imgur.com/7NL3ybS.jpg" alt="Truco" class="w-full h-32 object-cover mb-2 rounded">
+                    <h3 class="font-semibold mb-2">Truco</h3>
+                    <p class="text-sm text-gray-600 mb-2">Jogadores online: 1.245</p>
+                    <a href="#" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Jogar Agora</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 text-center transform hover:scale-105 transition duration-300">
+                    <img src="https://i.imgur.com/QqYGGnK.jpg" alt="Poker" class="w-full h-32 object-cover mb-2 rounded">
+                    <h3 class="font-semibold mb-2">Poker</h3>
+                    <p class="text-sm text-gray-600 mb-2">Prêmio atual: R$ 50.000</p>
+                    <a href="#" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Entrar no Torneio</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 text-center transform hover:scale-105 transition duration-300">
+                    <img src="https://i.imgur.com/Z3KBtcO.jpg" alt="Blackjack" class="w-full h-32 object-cover mb-2 rounded">
+                    <h3 class="font-semibold mb-2">Blackjack</h3>
+                    <p class="text-sm text-gray-600 mb-2">Mesas VIP disponíveis</p>
+                    <a href="#" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Jogar</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 text-center transform hover:scale-105 transition duration-300">
+                    <img src="https://i.imgur.com/8TXcuoG.jpg" alt="Bingo" class="w-full h-32 object-cover mb-2 rounded">
+                    <h3 class="font-semibold mb-2">Bingo</h3>
+                    <p class="text-sm text-gray-600 mb-2">Próximo sorteio em 5 min</p>
+                    <a href="#" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Comprar Cartela</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Últimas Transações</h2>
+                <ul class="space-y-2">
+                    <li class="flex justify-between items-center border-b pb-2">
+                        <span>Depósito via PIX</span>
+                        <span class="text-green-600">+R$ 500,00</span>
+                    </li>
+                    <li class="flex justify-between items-center border-b pb-2">
+                        <span>Aposta - Poker Texas Hold'em</span>
+                        <span class="text-red-600">-R$ 200,00</span>
+                    </li>
+                    <li class="flex justify-between items-center border-b pb-2">
+                        <span>Ganho - Blackjack</span>
+                        <span class="text-green-600">+R$ 375,00</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span>Bônus de recarga</span>
+                        <span class="text-green-600">+R$ 75,00</span>
+                    </li>
+                </ul>
+                <a href="#" class="mt-4 text-blue-600 hover:underline block text-right">Ver todas as transações</a>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Promoções Ativas</h2>
+                <ul class="space-y-4">
+                    <li class="border-b pb-2">
+                        <h3 class="font-semibold">Super Bônus de Recarga</h3>
+                        <p class="text-sm text-gray-600">Ganhe 100% extra em depósitos acima de R$ 200 hoje!</p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm">Saiba mais</a>
+                    </li>
+                    <li class="border-b pb-2">
+                        <h3 class="font-semibold">Mega Torneio de Poker</h3>
+                        <p class="text-sm text-gray-600">Prêmio garantido de R$ 100.000 neste fim de semana</p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm">Inscreva-se agora</a>
+                    </li>
+                    <li>
+                        <h3 class="font-semibold">Cashback Turbinado</h3>
+                        <p class="text-sm text-gray-600">Receba até 25% de cashback em todas as apostas até domingo</p>
+                        <a href="#" class="text-blue-600 hover:underline text-sm">Ativar promoção</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm mb-2">&copy; 2024 CardMaster. Todos os direitos reservados.</p>
+            <div class="flex flex-wrap justify-center space-x-4 mb-4">
+                <a href="/termos-de-servicos" class="text-gray-400 hover:text-white transition duration-300">Termos de Uso</a>
+                <a href="/politica-de-privacidade" class="text-gray-400 hover:text-white transition duration-300">Política de Privacidade</a>
+                <a href="/suporte" class="text-gray-400 hover:text-white transition duration-300">Suporte</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Jogo Responsável</a>
+            </div>
+            <p class="text-xs text-gray-500">Jogue com responsabilidade. O jogo pode ser viciante. Ligue 0800 123 4567 para obter ajuda.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Adicione aqui o JavaScript para funcionalidades dinâmicas
+        // Por exemplo, atualizações em tempo real de saldos e promoções
+    </script>
+</body>
+</html>

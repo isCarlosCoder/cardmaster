@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de E-mail - CardMaster</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-blue-600">CardMaster</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center py-12 px-4">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center">
+            <i class="fas fa-envelope-open-text text-6xl text-blue-600 mb-6"></i>
+            <h1 class="text-3xl font-bold text-blue-600 mb-4">Confirme seu E-mail</h1>
+            <p class="text-gray-600 mb-6">Enviamos um link de confirmação para o seu e-mail. Por favor, verifique sua caixa de entrada e clique no link para ativar sua conta.</p>
+            <div class="mb-6">
+                <p class="text-sm text-gray-500">Não recebeu o e-mail?</p>
+                <button class="mt-2 text-blue-600 hover:text-blue-800 font-semibold">Reenviar e-mail de confirmação</button>
+            </div>
+            <a href="/" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline inline-block transition duration-300">
+                Voltar para a Página Inicial
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm mb-2">&copy; 2024 CardMaster. Todos os direitos reservados.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="/termos-de-uso" class="text-gray-400 hover:text-white transition duration-300">Termos de Uso</a>
+                <a href="/politica-de-privacidade" class="text-gray-400 hover:text-white transition duration-300">Política de Privacidade</a>
+                <a href="/suporte" class="text-gray-400 hover:text-white transition duration-300">Suporte</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
