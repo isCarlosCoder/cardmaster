@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware para não conseguir acessar home e jogos sem login
 app.use('/home', authenticationMiddleware);
 app.use('/jogos', authenticationMiddleware);
+app.use('/jogos/numero-da-sorte', authenticationMiddleware);
 
 // Middleware para redirecionar usuários logados
 const redirectIfLoggedIn = (req, res, next) => {
@@ -308,8 +309,7 @@ app.post('/login', async (req, res) => {
 });
 
 // Rotas para os jogos
-
-app.get('/numero-da-sorte', async (req, res) => {
+app.get('/jogos/numero-da-sorte', async (req, res) => {
   const game = {
     number: 32,
     date: new Date().toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit' }),
